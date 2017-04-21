@@ -1,0 +1,359 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="http://sentsin.com/layui/laytpl/"
+
+    >laytpl (v1.3.5)</a>
+</h1>
+<h4>Ingenious JavaScript templates</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.laytpl">module laytpl</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.laytpl.__express">
+            function <span class="apidocSignatureSpan">laytpl.</span>__express
+            <span class="apidocSignatureSpan">(file, options, fn)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.laytpl.config">
+            function <span class="apidocSignatureSpan">laytpl.</span>config
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.laytpl.getParse">
+            function <span class="apidocSignatureSpan">laytpl.</span>getParse
+            <span class="apidocSignatureSpan">(tpl, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.laytpl.parse">
+            function <span class="apidocSignatureSpan">laytpl.</span>parse
+            <span class="apidocSignatureSpan">(tpl, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.laytpl.render">
+            function <span class="apidocSignatureSpan">laytpl.</span>render
+            <span class="apidocSignatureSpan">(tpl, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.laytpl.renderFile">
+            function <span class="apidocSignatureSpan">laytpl.</span>renderFile
+            <span class="apidocSignatureSpan">(file, options, fn)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.laytpl" id="apidoc.module.laytpl">module laytpl</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.laytpl.__express" id="apidoc.element.laytpl.__express">
+        function <span class="apidocSignatureSpan">laytpl.</span>__express
+        <span class="apidocSignatureSpan">(file, options, fn)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">__express = function (file, options, fn){
+  var tpl;
+  if (&#x27;function&#x27; == typeof options) {
+    fn = options, options = {};
+  }
+  options.filename = file;
+
+  try {
+    if(config.cache){
+     tpl = options.cache || (function(){
+      if(cache[file]){
+        return cache[file];
+      } else {
+        return cache[file] = read(file, &#x27;utf8&#x27;);
+      }
+     }());
+    } else {
+      tpl = read(file, &#x27;utf8&#x27;);
+    }
+  } catch(err) {
+    fn(err);
+    delete cache[file];
+    return;
+  };
+  fn(null, exports.render(tpl, options));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.laytpl.config" id="apidoc.element.laytpl.config">
+        function <span class="apidocSignatureSpan">laytpl.</span>config
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">config = function (options){
+  options = options || {};
+  for(var i in options){
+    config[i] = options[i];
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  });
+});
+```
+## 自定义分隔符(Custom delimiters)
+
+Custom delimiters can also be applied globally:
+```
+laytpl.<span class="apidocCodeKeywordSpan">config</span>({
+  open: &#x27;{{&#x27;,
+  close: &#x27;}}&#x27;
+});
+```
+## 缓存(cache)
+laytpl默认不开启缓存，这在你开发时非常有利。但是当你的模版足够稳定，你如果需要开启该项，只需要按以下设置即可：
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.laytpl.getParse" id="apidoc.element.laytpl.getParse">
+        function <span class="apidocSignatureSpan">laytpl.</span>getParse
+        <span class="apidocSignatureSpan">(tpl, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getParse = function (tpl, options){
+  var file = options.filename;
+  tpl = &#x27;&#x22;use strict&#x22;;var view = &#x22;&#x27; + exports.parse(tpl, options) + &#x27;&#x22;;return view;&#x27;;
+  try {
+    cache[&#x27;tpl_&#x27; + file] = tpl = new Function(&#x27;d, _escape_&#x27;, tpl);
+    return tpl(options, tool.escape);
+  } catch(e) {
+    delete cache[&#x27;tpl_&#x27; + file];
+    return tool.error(e);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.laytpl.parse" id="apidoc.element.laytpl.parse">
+        function <span class="apidocSignatureSpan">laytpl.</span>parse
+        <span class="apidocSignatureSpan">(tpl, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parse = function (tpl, options){
+  var that = this, file = options.filename;
+  var jss = exp(&#x27;^&#x27;+config.open+&#x27;#&#x27;, &#x27;&#x27;), jsse = exp(config.close+&#x27;$&#x27;, &#x27;&#x27;);
+  tpl = tpl.replace(/[\r\t\n]+/g,  splitstr)
+  .replace(exp(config.open+&#x27;#&#x27;), config.open+&#x27;# &#x27;)
+  .replace(exp(config.close+&#x27;}&#x27;), &#x27;} &#x27;+config.close).replace(/\\/g, &#x27;\\\\&#x27;)
+
+  //不匹配指定区域的内容
+  .replace(exp(config.open + &#x27;!(.+?)!&#x27; + config.close), function(str){
+    str = str.replace(exp(&#x27;^&#x27;+ config.open + &#x27;!&#x27;), &#x27;&#x27;)
+    .replace(exp(&#x27;!&#x27;+ config.close), &#x27;&#x27;)
+    .replace(exp(config.open + &#x27;|&#x27; + config.close), function(tag){
+      return tag.replace(/(.)/g, &#x27;\\$1&#x27;)
+    });
+    return str
+  })
+
+  //匹配JS规则内容
+  .replace(/(?=&#x22;|&#x27;)/g, &#x27;\\&#x27;).replace(tool.query(), function(str){
+    str = str.replace(jss, &#x27;&#x27;).replace(jsse, &#x27;&#x27;);
+    str = str.replace(exp(splitstr), &#x27;&#x27;);
+    return &#x27;&#x22;;&#x27; + str.replace(/\\/g, &#x27;&#x27;) + &#x27;;view+=&#x22;&#x27;;
+  })
+
+  //匹配普通字段
+  .replace(tool.query(1), function(str){
+    var start = &#x27;&#x22;+(&#x27;;
+    if(str.replace(/\s/g, &#x27;&#x27;) === config.open+config.close){
+      return &#x27;&#x27;;
+    }
+    str = str.replace(exp(config.open+&#x27;|&#x27;+config.close), &#x27;&#x27;);
+    if(/^=/.test(str)){
+      str = str.replace(/^=/, &#x27;&#x27;);
+      start = &#x27;&#x22;+_escape_(&#x27;;
+    }
+    if(/^\s*include/.test(str)){
+      var match = str.match(/^\s*include\s+([\s\S]+?)\s*$/)||[];
+      if (!file) throw new Error(&#x27;filename option is required for includes&#x27;);
+      if(!match[1]) return &#x27;&#x27;;
+      var newfile = tool.reinclude(match[1], file);
+      return exports.parse(read(newfile, &#x27;utf8&#x27;), options);
+    }
+    return start + str.replace(/\\/g, &#x27;&#x27;) + &#x27;)+&#x22;&#x27;;
+  });
+  return tpl;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.laytpl.render" id="apidoc.element.laytpl.render">
+        function <span class="apidocSignatureSpan">laytpl.</span>render
+        <span class="apidocSignatureSpan">(tpl, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">render = function (tpl, options){
+  var that = this, file = options.filename;
+  if(config.cache &#x26;&#x26; cache[&#x27;tpl_&#x27; + file]){
+    tpl = cache[&#x27;tpl_&#x27; + file](options, tool.escape);
+  } else {
+    tpl = that.getParse(tpl, options);
+  }
+  return tpl.replace(exp(splitstr), config.min ? &#x27;&#x27; : &#x27;\n&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+{{ include footer }}
+```
+
+### 第三步
+渲染(render)
+```
+app.get(&#x27;/&#x27;, function(req, res){
+  res.<span class="apidocCodeKeywordSpan">render</span>(&#x27;index&#x27;, {
+    user: {name: &#x27;贤心&#x27;},
+    intro: &#x27;来自中国的前端开发工程师&#x27;
+  });
+});
+```
+## 自定义分隔符(Custom delimiters)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.laytpl.renderFile" id="apidoc.element.laytpl.renderFile">
+        function <span class="apidocSignatureSpan">laytpl.</span>renderFile
+        <span class="apidocSignatureSpan">(file, options, fn)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">renderFile = function (file, options, fn){
+  var tpl;
+  if (&#x27;function&#x27; == typeof options) {
+    fn = options, options = {};
+  }
+  options.filename = file;
+
+  try {
+    if(config.cache){
+     tpl = options.cache || (function(){
+      if(cache[file]){
+        return cache[file];
+      } else {
+        return cache[file] = read(file, &#x27;utf8&#x27;);
+      }
+     }());
+    } else {
+      tpl = read(file, &#x27;utf8&#x27;);
+    }
+  } catch(err) {
+    fn(err);
+    delete cache[file];
+    return;
+  };
+  fn(null, exports.render(tpl, options));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
